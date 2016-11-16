@@ -11,6 +11,8 @@ const mqpacker = require('css-mqpacker');
 const minify = require('gulp-csso');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 
 gulp.task('style', function () {
   gulp.src('sass/style.scss')
@@ -38,6 +40,11 @@ gulp.task('style', function () {
 gulp.task('scripts', function () {
   return gulp.src('js/**/*.js')
     .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('build/js/'));
 });
 
@@ -81,9 +88,9 @@ gulp.task('serve', ['assemble'], function () {
     ui: false
   });
 
-  gulp.watch('sass/**/*.{scss,sass}', ['style']);
+  /*gulp.watch('sass/!**!/!*.{scss,sass}', ['style']);
   gulp.watch('*.html', ['copy-html']);
-  gulp.watch('js/**/*.js', ['scripts']).on('change', server.reload);
+  gulp.watch('js/!**!/!*.js', ['scripts']).on('change', server.reload);*/
 });
 
 gulp.task('assemble', ['clean'], function () {
