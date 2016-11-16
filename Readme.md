@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Катя Наконе](https://up.htmlacademy.ru/ecmascript/1/user/316635).
-* Наставник: `Неизвестно`.
+* Наставник: [Кексобот](https://htmlacademy.ru/404).
 
 ---
 
