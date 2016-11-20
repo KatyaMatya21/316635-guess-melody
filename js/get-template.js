@@ -5,5 +5,3 @@ const htmlToElements = (html) => {
 };
 
 export default htmlToElements;
-
-// import htmlToElements from '/get-template';

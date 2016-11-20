@@ -1,7 +1,9 @@
-import htmlToElements from './get-template';
-
 // Экран первой игры main--level-artist
+import htmlToElements from './get-template';
+import mainGenre from './main--genre';
+import selectScreen from './selectScreen';
 
+// Шаблон разметки
 const mainArtistHtml = `<section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
@@ -46,4 +48,12 @@ const mainArtistHtml = `<section class="main main--level main--level-artist">
   </section>`;
 
 const mainArtist = htmlToElements(mainArtistHtml);
+
+// Переключение на второй экран игры
+let answerBtnList = mainArtist.querySelectorAll('.main-answer');
+const nextScreen = () => {
+  selectScreen(mainGenre);
+};
+answerBtnList.forEach((button) => button.addEventListener('click', nextScreen));
+
 export default mainArtist;

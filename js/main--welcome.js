@@ -1,7 +1,9 @@
-import htmlToElements from './get-template';
-
 // Главный экран main--welcome
+import htmlToElements from './get-template';
+import mainArtist from './main--artist';
+import selectScreen from './selectScreen';
 
+// Шаблон разметки
 const mainWelcomeHtml = `<section class="main main--welcome">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
     <button class="main-play">Начать игру</button>
@@ -15,4 +17,8 @@ const mainWelcomeHtml = `<section class="main main--welcome">
   </section>`;
 
 const mainWelcome = htmlToElements(mainWelcomeHtml);
+
+// Переключение на первый экран игры
+mainWelcome.querySelector('.main-play').addEventListener('click', () => selectScreen(mainArtist));
+
 export default mainWelcome;
