@@ -1,4 +1,4 @@
-import htmlToElements from '/get-template';
+import htmlToElements from './get-template';
 
 // Экран второй игры main--level-genre
 

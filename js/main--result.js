@@ -1,4 +1,4 @@
-import htmlToElements from '/get-template';
+import htmlToElements from './get-template';
 
 // Экран результатов main--result
 
