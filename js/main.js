@@ -1,19 +1,17 @@
+import mainWelcome from './main--welcome';
+import mainArtist from './main--artist';
+import mainGenre from './main--genre';
+import mainResult from './main--result';
+
 (function () {
 
-  let template = document.querySelector('template');
-
-  let loadTemplate = (templateName) => {
-    let content = template.content ? template.content : template;
-    return content.querySelector(templateName).cloneNode(true);
-  };
-
-
   let slides = [
-    loadTemplate('.main--welcome'),
-    loadTemplate('.main--level-artist'),
-    loadTemplate('.main--level-genre'),
-    loadTemplate('.main--result')
+    mainWelcome,
+    mainArtist,
+    mainGenre,
+    mainResult
   ];
+
   let current = -1;
 
   let select = (index) => {
@@ -38,5 +36,5 @@
   };
 
   select(0);
-})();
 
+})();
