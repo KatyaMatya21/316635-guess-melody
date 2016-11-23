@@ -7,7 +7,7 @@ import logo from './logo';
 export default (data) => {
 
   // Шаблоны разметки
-  const logoHtml = logo({ 'logo': data.logo });
+  const logoHtml = logo({'logo': data.logo});
 
   const contentHtml = `<h2 class="title">${data.content.title}</h2>
                     <div class="main-stat">${data.content.stat.main}</div>
