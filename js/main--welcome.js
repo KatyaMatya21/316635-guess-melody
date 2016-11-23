@@ -17,15 +17,15 @@ const welcome = {
 
 // Шаблоны разметки
 const header = `<section class="logo" title="Угадай мелодию"><h1>${welcome.logo}</h1></section>`;
-const button = `<button class="main-play">${welcome.content.play}</button>`;
-const rulesTitle = `<h2 class="title main-title">${welcome.content.rules.title}</h2>`;
-const rulesText = `<p class="text main-text">${welcome.content.rules.text}</p>`;
+const content = `
+<button class="main-play">${welcome.content.play}</button>
+<h2 class="title main-title">${welcome.content.rules.title}</h2>
+<p class="text main-text">${welcome.content.rules.text}</p>
+`;
 
 const article = `<section class="main main--welcome">
   ${header}
-  ${button}
-  ${rulesTitle}
-  ${rulesText}
+  ${content}
 </section>`;
 
 const mainWelcome = htmlToElements(article);
