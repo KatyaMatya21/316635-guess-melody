@@ -1,5 +1,5 @@
 // Главный экран main--welcome
-import htmlToElements from './get-template';
+import htmlToElements from './htmlToElements';
 import mainArtist from './main--artist';
 import selectScreen from './selectScreen';
 

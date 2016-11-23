@@ -1,5 +1,5 @@
 // Экран второй игры main--level-genre
-import htmlToElements from './get-template';
+import htmlToElements from './htmlToElements';
 import mainResult from './main--result';
 import selectScreen from './selectScreen';
 

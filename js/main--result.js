@@ -1,5 +1,5 @@
 // Экран результатов main--result
-import htmlToElements from './get-template';
+import htmlToElements from './htmlToElements';
 import mainWelcome from './main--welcome';
 import selectScreen from './selectScreen';
 

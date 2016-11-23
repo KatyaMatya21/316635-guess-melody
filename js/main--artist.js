@@ -1,5 +1,5 @@
 // Экран первой игры main--level-artist
-import htmlToElements from './get-template';
+import htmlToElements from './htmlToElements';
 import mainGenre from './main--genre';
 import selectScreen from './selectScreen';
 
@@ -50,7 +50,7 @@ const mainArtistHtml = `<section class="main main--level main--level-artist">
 const mainArtist = htmlToElements(mainArtistHtml);
 
 // Переключение на второй экран игры
-let answerBtnList = mainArtist.querySelectorAll('.main-answer');
+const answerBtnList = mainArtist.querySelectorAll('.main-answer');
 const nextScreen = () => {
   selectScreen(mainGenre);
 };
