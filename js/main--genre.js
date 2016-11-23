@@ -3,35 +3,36 @@ import htmlToElements from './htmlToElements';
 import mainResult from './main--result';
 import selectScreen from './selectScreen';
 
-// Шаблон разметки
-const mainGenreHtml = `<section class="main main--level main--level-genre">
-    <h2 class="title">Выберите инди-рок треки</h2>
-    <form class="genre">
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-1">
-        <label class="genre-answer-check" for="a-1"></label>
-      </div>
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-2">
-        <label class="genre-answer-check" for="a-2"></label>
-      </div>
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-3">
-        <label class="genre-answer-check" for="a-3"></label>
-      </div>
-      <div class="genre-answer">
-        <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-4">
-        <label class="genre-answer-check" for="a-4"></label>
-      </div>
-      <button class="genre-answer-send" type="submit" disabled>Ответить</button>
-    </form>
-  </section>`;
+// Данные
+const genre = {
+  question: 'Выберите инди-рок треки',
+  answer: ['answer-1', 'answer-1', 'answer-1', 'answer-1'],
+  play: 'Ответить'
+};
 
-const mainGenre = htmlToElements(mainGenreHtml);
+// Шаблоны разметки
+const questionHtml = `<h2 class="title">${genre.question}</h2>`;
+
+let answersHtml = '';
+genre.answer.forEach( (answer, n) => {
+  answersHtml += `<div class="genre-answer">
+                    <div class="player-wrapper"></div>
+                    <input type="checkbox" name="answer" value="${answer}" id="a-${n}">
+                    <label class="genre-answer-check" for="a-${n}"></label>
+                  </div>`;
+});
+
+const playButtonHtml = `<button class="genre-answer-send" type="submit" disabled>${genre.play}</button>`;
+
+const article = `<section class="main main--level main--level-genre">
+                  ${questionHtml} 
+                  <form class="genre">
+                    ${answersHtml}
+                    ${playButtonHtml}
+                  </form>
+                </section>`;
+
+const mainGenre = htmlToElements(article);
 
 const sendAnswerBtn = mainGenre.querySelector('.genre-answer-send');
 const checkboxList = mainGenre.querySelectorAll('.genre-answer input[type="checkbox"]');

@@ -17,19 +17,19 @@ const result = {
 };
 
 // Шаблоны разметки
-const header = `<section class="logo" title="Угадай мелодию"><h1>${result.logo}</h1></section>`;
-const title = `<h2 class="title">${result.content.title}</h2>`;
-const resultMain = `<div class="main-stat">${result.content.stat.main}</div>`;
-const resultCompare = `<span class="main-comparison">${result.content.stat.compare}</span>`;
-const playButton = `<span role="button" tabindex="0" class="main-replay">${result.content.button}</span>`;
+const headerHtml = `<section class="logo" title="Угадай мелодию"><h1>${result.logo}</h1></section>`;
+
+const contentHtml = `<h2 class="title">${result.content.title}</h2>
+                    <div class="main-stat">${result.content.stat.main}</div>
+                    <span class="main-comparison">${result.content.stat.compare}</span>`;
+
+const playButtonHtml = `<span role="button" tabindex="0" class="main-replay">${result.content.button}</span>`;
 
 const article = `<section class="main main--result">
-  ${header}
-  ${title}
-  ${resultMain}
-  ${resultCompare}
-  ${playButton}
-</section>`;
+                  ${headerHtml}
+                  ${contentHtml}
+                  ${playButtonHtml}
+                </section>`;
 
 const mainResult = htmlToElements(article);
 
