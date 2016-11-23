@@ -1,7 +1,7 @@
 // Экран результатов main--result
-import htmlToElements from './htmlToElements';
+import htmlToElements from '../htmlToElements';
 import mainWelcome from './main--welcome';
-import selectScreen from './selectScreen';
+import selectScreen from '../selectScreen';
 
 export default (data) => {
 

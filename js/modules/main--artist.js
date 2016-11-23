@@ -1,7 +1,7 @@
 // Первый экран игры main--level-artist
-import htmlToElements from './htmlToElements';
+import htmlToElements from '../htmlToElements';
 import mainGenre from './main--genre';
-import selectScreen from './selectScreen';
+import selectScreen from '../selectScreen';
 
 export default (data) => {
 

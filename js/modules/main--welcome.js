@@ -1,7 +1,7 @@
 // Главный экран main--welcome
-import htmlToElements from './htmlToElements';
+import htmlToElements from '../htmlToElements';
 import mainArtist from './main--artist';
-import selectScreen from './selectScreen';
+import selectScreen from '../selectScreen';
 
 export default (data) => {
 
