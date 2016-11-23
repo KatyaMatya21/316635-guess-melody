@@ -2,11 +2,12 @@
 import htmlToElements from '../htmlToElements';
 import mainWelcome from './main--welcome';
 import selectScreen from '../selectScreen';
+import logo from './logo';
 
 export default (data) => {
 
   // Шаблоны разметки
-  const headerHtml = `<section class="logo" title="Угадай мелодию"><h1>${data.logo}</h1></section>`;
+  const logoHtml = logo({ 'logo': data.logo });
 
   const contentHtml = `<h2 class="title">${data.content.title}</h2>
                     <div class="main-stat">${data.content.stat.main}</div>
@@ -15,7 +16,7 @@ export default (data) => {
   const playButtonHtml = `<span role="button" tabindex="0" class="main-replay">${data.content.button}</span>`;
 
   const article = `<section class="main main--result">
-                  ${headerHtml}
+                  ${logoHtml}
                   ${contentHtml}
                   ${playButtonHtml}
                 </section>`;
