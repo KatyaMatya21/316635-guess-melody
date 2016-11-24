@@ -42,13 +42,11 @@ export default (data) => {
 // Переключение на результаты
   const nextScreen = (evt) => {
     selectScreen(mainResult({
-      logo: 'Угадай мелодию',
-      content: {
-        title: 'Вы настоящий меломан!',
-        stat: {
-          main: 'За&nbsp;2&nbsp;минуты<br>вы&nbsp;отгадали 4&nbsp;мелодии',
-          compare: 'Это&nbsp;лучше чем у&nbsp;80%&nbsp;игроков'
-        }
+      title: 'Вы настоящий меломан!',
+      stat: {
+        minute: '2',
+        songs: '4',
+        compare: '80%'
       }
     }));
     evt.preventDefault();

@@ -7,9 +7,9 @@ import logo from './logo';
 export default (data) => {
 
   // Шаблоны разметки
-  const contentHtml = `<h2 class="title">${data.content.title}</h2>
-                    <div class="main-stat">${data.content.stat.main}</div>
-                    <span class="main-comparison">${data.content.stat.compare}</span>`;
+  const contentHtml = `<h2 class="title">${data.title}</h2>
+                    <div class="main-stat">За&nbsp;${data.stat.minute}&nbsp;минуты<br>вы&nbsp;отгадали ${data.stat.songs}&nbsp;мелодии</div>
+                    <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${data.stat.compare}&nbsp;игроков</span>`;
 
   const playButtonHtml = `<span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>`;
 
