@@ -48,8 +48,7 @@ export default (data) => {
         stat: {
           main: 'За&nbsp;2&nbsp;минуты<br>вы&nbsp;отгадали 4&nbsp;мелодии',
           compare: 'Это&nbsp;лучше чем у&nbsp;80%&nbsp;игроков'
-        },
-        button: 'Сыграть ещё раз'
+        }
       }
     }));
     evt.preventDefault();

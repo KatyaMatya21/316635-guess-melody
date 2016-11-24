@@ -4,17 +4,15 @@ import mainArtist from './main--artist';
 import selectScreen from '../selectScreen';
 import logo from './logo';
 
-export default (data) => {
+export default () => {
 
   // Шаблоны разметки
-  const logoHtml = logo({'logo': data.logo});
-
-  const contentHtml = `<button class="main-play">${data.content.play}</button>
-                      <h2 class="title main-title">${data.content.rules.title}</h2>
-                      <p class="text main-text">${data.content.rules.text}</p>`;
+  const contentHtml = `<button class="main-play">Начать игру</button>
+                      <h2 class="title main-title">Правила игры</h2>
+                      <p class="text main-text">Правила просты&nbsp;— за&nbsp;2 минуты дать максимальное количество правильных ответов.<br> На&nbsp;каждую мелодию всего 3 варианта ответа.<br> Удачи!</p>`;
 
   const article = `<section class="main main--welcome">
-                    ${logoHtml}
+                    ${logo}
                     ${contentHtml}
                   </section>`;
 
