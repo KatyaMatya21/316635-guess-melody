@@ -25,7 +25,7 @@ export default class ScreenArtist extends Screen {
       return `<div class="main-answer-wrapper">
        <input class="main-answer-r" type="radio" id="answer-${n + 1}" name="answer" value="val-${n + 1}" />
        <label class="main-answer" for="answer-${n + 1}">
-       <img class="main-answer-preview" src="">
+       <img class="main-answer-preview" src="${answer.urlPic}">
         ${answer.singer}
        </label>
       </div>`;
