@@ -7,20 +7,21 @@ export default [
   {
     type: Screen.screentype.ARTIST,
     question: 'Кто исполняет эту песню?',
+    mp3: '...',
     answers: [
       {
         singer: 'Daughter',
-        correct: 0,
+        correct: false,
         urlPic: '...'
       },
       {
         singer: 'The Strokes',
-        correct: 0,
+        correct: false,
         urlPic: '...'
       },
       {
         singer: 'Kings of Leon',
-        correct: 1,
+        correct: true,
         urlPic: '...'
       }
     ]
@@ -31,23 +32,23 @@ export default [
     answers: [
       {
         song: 'answer-1',
-        correct: 0,
-        urlMp3: '...'
+        correct: true,
+        mp3: '...'
       },
       {
         song: 'answer-2',
-        correct: 0,
-        urlMp3: '...'
+        correct: false,
+        mp3: '...'
       },
       {
         song: 'answer-3',
-        correct: 1,
-        urlMp3: '...'
+        correct: false,
+        mp3: '...'
       },
       {
         song: 'answer-4',
-        correct: 0,
-        urlMp3: '...'
+        correct: false,
+        mp3: '...'
       }
     ]
   },
