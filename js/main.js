@@ -1,5 +1,5 @@
-import mainWelcome from './main--welcome';
-import selectScreen from './selectScreen';
+import Manager from './modules/manager';
+import data from './data-questions';
 
-// Загрузка главного экрана main--welcome
-selectScreen(mainWelcome);
+const manager = new Manager(data);
+manager.start();
