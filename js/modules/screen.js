@@ -13,9 +13,18 @@ export default class Screen {
     this.data = data;
     this.type = type;
     this.manager = null;
+    this.element = null;
   }
 
   renderHtml() {
+
+  }
+
+  bindHandlers() {
+
+  }
+
+  clearHandlers() {
 
   }
 

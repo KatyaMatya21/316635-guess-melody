@@ -9,6 +9,10 @@ export default class ScreenArtist extends Screen {
 
   renderHtml() {
 
+    if (this.element) {
+      return this.element;
+    }
+
     const timerHtml = `<svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle cx="390" cy="390" r="370" class="timer-line" style="filter: url(.#blur); 
       transform: rotate(-90deg) scaleY(-1); transform-origin: center"></circle>
@@ -43,16 +47,20 @@ export default class ScreenArtist extends Screen {
       </div>
     </section>`;
 
-    const element = htmlToElements(article);
-    const answerBtnList = element.querySelectorAll('.main-answer');
+    this.element = htmlToElements(article);
+    this.bindHandlers();
+
+    return this.element;
+  }
+
+  bindHandlers() {
+    const answerBtnList = this.element.querySelectorAll('.main-answer');
 
     answerBtnList.forEach((button) => button.addEventListener('click', (event) => {
       const selectedIndex = event.currentTarget.dataset.index;
       const selectedAnswer = this.data.answers[selectedIndex].correct;
       this.nextScreen(selectedAnswer);
     }));
-
-    return element;
   }
 
 }

@@ -10,6 +10,10 @@ export default class ScreenStart extends Screen {
 
   renderHtml() {
 
+    if (this.element) {
+      return this.element;
+    }
+
     const template = `<section class="main main--welcome">
     ${logoHtml}
     <button class="main-play">Начать игру</button>
@@ -21,13 +25,17 @@ export default class ScreenStart extends Screen {
     </p>
     </section>`;
 
-    const element = htmlToElements(template);
-    element.querySelector('.main-play').addEventListener('click', () => {
+    this.element = htmlToElements(template);
+    this.bindHandlers();
+
+    return this.element;
+  }
+
+  bindHandlers() {
+    this.element.querySelector('.main-play').addEventListener('click', () => {
       this.manager.startTimer();
       this.nextScreen();
     });
-
-    return element;
   }
 
 }
