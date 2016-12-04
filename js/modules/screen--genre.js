@@ -27,14 +27,19 @@ export default class ScreenGenre extends Screen {
       </form>
     </section>`;
 
-    const element = htmlToElements(article);
+    this.element = htmlToElements(article);
+    this.bindHandlers();
 
-    const sendAnswerBtn = element.querySelector('.genre-answer-send');
-    const checkboxList = element.querySelectorAll('.genre-answer input[type="checkbox"]');
+    return this.element;
+  }
+
+  bindHandlers() {
+    const sendAnswerBtn = this.element.querySelector('.genre-answer-send');
+    const checkboxList = this.element.querySelectorAll('.genre-answer input[type="checkbox"]');
 
     for ( let item of checkboxList) {
       item.addEventListener('change', () => {
-        sendAnswerBtn.disabled = !element.querySelectorAll('input[type="checkbox"]:checked').length;
+        sendAnswerBtn.disabled = !this.element.querySelectorAll('input[type="checkbox"]:checked').length;
       });
     }
 
@@ -42,7 +47,7 @@ export default class ScreenGenre extends Screen {
       event.preventDefault();
 
       let checkedFlag = true;
-      const checkedCheckbox = element.querySelectorAll('input[type="checkbox"]:checked');
+      const checkedCheckbox = this.element.querySelectorAll('input[type="checkbox"]:checked');
 
       for ( let item of checkedCheckbox) {
         const selectedIndex = item.dataset.index;
@@ -56,8 +61,6 @@ export default class ScreenGenre extends Screen {
 
       this.nextScreen(checkedFlag);
     });
-
-    return element;
   }
 
 }

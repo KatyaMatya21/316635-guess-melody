@@ -28,7 +28,6 @@ export default class ScreenEnd extends Screen {
         currentResult = n;
       }
     });
-
     const pos = Math.floor(((dataStatistics.length - currentResult) / dataStatistics.length) * 100);
 
     const template = `<section class="main main--result">
@@ -39,12 +38,16 @@ export default class ScreenEnd extends Screen {
     <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
     </section>`;
 
-    const element = htmlToElements(template);
-    element.querySelector('.main-replay').addEventListener('click', () => {
+    this.element = htmlToElements(template);
+    this.bindHandlers();
+
+    return this.element;
+  }
+
+  bindHandlers() {
+    this.element.querySelector('.main-replay').addEventListener('click', () => {
       this.nextScreen();
     });
-
-    return element;
   }
 
 }

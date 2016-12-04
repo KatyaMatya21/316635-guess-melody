@@ -43,16 +43,20 @@ export default class ScreenArtist extends Screen {
       </div>
     </section>`;
 
-    const element = htmlToElements(article);
-    const answerBtnList = element.querySelectorAll('.main-answer');
+    this.element = htmlToElements(article);
+    this.bindHandlers();
+
+    return this.element;
+  }
+
+  bindHandlers() {
+    const answerBtnList = this.element.querySelectorAll('.main-answer');
 
     answerBtnList.forEach((button) => button.addEventListener('click', (event) => {
       const selectedIndex = event.currentTarget.dataset.index;
       const selectedAnswer = this.data.answers[selectedIndex].correct;
       this.nextScreen(selectedAnswer);
     }));
-
-    return element;
   }
 
 }

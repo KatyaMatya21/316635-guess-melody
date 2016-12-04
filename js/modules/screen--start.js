@@ -21,13 +21,17 @@ export default class ScreenStart extends Screen {
     </p>
     </section>`;
 
-    const element = htmlToElements(template);
-    element.querySelector('.main-play').addEventListener('click', () => {
+    this.element = htmlToElements(template);
+    this.bindHandlers();
+
+    return this.element;
+  }
+
+  bindHandlers() {
+    this.element.querySelector('.main-play').addEventListener('click', () => {
       this.manager.startTimer();
       this.nextScreen();
     });
-
-    return element;
   }
 
 }
