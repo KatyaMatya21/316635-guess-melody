@@ -1,4 +1,4 @@
-import htmlToElements from '../htmlToElements';
+import htmlToElements from './htmlToElements';
 import Screen from './screen';
 
 export default class ScreenGenre extends Screen {
@@ -14,7 +14,7 @@ export default class ScreenGenre extends Screen {
     let answersHtml = this.data.answers.map((answer, n) => {
       return `<div class="genre-answer">
        <div class="player-wrapper"></div>
-       <input type="checkbox" name="answer" value="${answer.song}" id="a-${n + 1}">
+       <input type="checkbox" name="answer" value="${answer.song}" id="a-${n + 1}" data-index="${n}">
        <label class="genre-answer-check" for="a-${n + 1}"></label>
       </div>`;
     }).join('');
@@ -38,14 +38,26 @@ export default class ScreenGenre extends Screen {
       });
     }
 
-    sendAnswerBtn.addEventListener('click', this.nextScreen.bind(this));
+    sendAnswerBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      let checkedFlag = true;
+      const checkedCheckbox = element.querySelectorAll('input[type="checkbox"]:checked');
+
+      for ( let item of checkedCheckbox) {
+        const selectedIndex = item.dataset.index;
+        const isCorrectAnswer = this.data.answers[selectedIndex].correct;
+
+        if (!isCorrectAnswer) {
+          checkedFlag = false;
+          break;
+        }
+      }
+
+      this.nextScreen(checkedFlag);
+    });
 
     return element;
-  }
-
-  nextScreen(e) {
-    e.preventDefault();
-    this.manager.next();
   }
 
 }

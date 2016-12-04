@@ -1,5 +1,5 @@
 import logoHtml from './logo';
-import htmlToElements from '../htmlToElements';
+import htmlToElements from './htmlToElements';
 import Screen from './screen';
 
 export default class ScreenStart extends Screen {
@@ -22,7 +22,10 @@ export default class ScreenStart extends Screen {
     </section>`;
 
     const element = htmlToElements(template);
-    element.querySelector('.main-play').addEventListener('click', this.nextScreen.bind(this));
+    element.querySelector('.main-play').addEventListener('click', () => {
+      this.manager.startTimer();
+      this.nextScreen();
+    });
 
     return element;
   }
