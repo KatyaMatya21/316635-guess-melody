@@ -9,6 +9,10 @@ export default class ScreenGenre extends Screen {
 
   renderHtml() {
 
+    if (this.element) {
+      return this.element;
+    }
+
     const questionHtml = `<h2 class="title">${this.data.question}</h2>`;
 
     let answersHtml = this.data.answers.map((answer, n) => {

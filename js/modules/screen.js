@@ -20,6 +20,14 @@ export default class Screen {
 
   }
 
+  bindHandlers() {
+
+  }
+
+  clearHandlers() {
+
+  }
+
   nextScreen(correct) {
     if (correct !== 'undefined') {
       this.manager.next(correct);
@@ -34,14 +42,6 @@ export default class Screen {
 
   getManagerScore() {
     return this.manager.getScore();
-  }
-
-  bindHandlers() {
-
-  }
-
-  clearHandlers() {
-
   }
 
 }

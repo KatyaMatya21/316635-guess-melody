@@ -10,6 +10,10 @@ export default class ScreenStart extends Screen {
 
   renderHtml() {
 
+    if (this.element) {
+      return this.element;
+    }
+
     const template = `<section class="main main--welcome">
     ${logoHtml}
     <button class="main-play">Начать игру</button>

@@ -11,6 +11,10 @@ export default class ScreenEnd extends Screen {
 
   renderHtml() {
 
+    if (this.element) {
+      return this.element;
+    }
+
     this.manager.stopTimer();
 
     const seconds = 120 - (this.manager.getTime());
