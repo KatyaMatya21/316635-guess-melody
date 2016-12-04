@@ -9,7 +9,7 @@ export default class Screen {
     };
   }
 
-  constructor( type, data = {} ) {
+  constructor(type, data = {}) {
     this.data = data;
     this.type = type;
     this.manager = null;
@@ -19,12 +19,20 @@ export default class Screen {
 
   }
 
-  nextScreen() {
-    this.manager.next();
+  nextScreen(correct) {
+    if (correct !== 'undefined') {
+      this.manager.next(correct);
+    } else {
+      this.manager.next();
+    }
   }
 
   setManager(manager) {
     this.manager = manager;
+  }
+
+  getManagerScore() {
+    return this.manager.getScore();
   }
 
 }

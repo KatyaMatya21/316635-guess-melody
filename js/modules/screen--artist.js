@@ -1,4 +1,4 @@
-import htmlToElements from '../htmlToElements';
+import htmlToElements from './htmlToElements';
 import Screen from './screen';
 
 export default class ScreenArtist extends Screen {
@@ -24,7 +24,7 @@ export default class ScreenArtist extends Screen {
     let answersHtml = this.data.answers.map((answer, n) => {
       return `<div class="main-answer-wrapper">
        <input class="main-answer-r" type="radio" id="answer-${n + 1}" name="answer" value="val-${n + 1}" />
-       <label class="main-answer" for="answer-${n + 1}">
+       <label class="main-answer" for="answer-${n + 1}" data-index="${n}">
        <img class="main-answer-preview" src="${answer.urlPic}">
         ${answer.singer}
        </label>
@@ -45,7 +45,12 @@ export default class ScreenArtist extends Screen {
 
     const element = htmlToElements(article);
     const answerBtnList = element.querySelectorAll('.main-answer');
-    answerBtnList.forEach((button) => button.addEventListener('click', this.nextScreen.bind(this)));
+
+    answerBtnList.forEach((button) => button.addEventListener('click', (event) => {
+      const selectedIndex = event.currentTarget.dataset.index;
+      const selectedAnswer = this.data.answers[selectedIndex].correct;
+      this.nextScreen(selectedAnswer);
+    }));
 
     return element;
   }

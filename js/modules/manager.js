@@ -15,17 +15,37 @@ export default class Manager {
       [Screen.screentype.GENRE, ScreenGenre]
     ]);
     this.currentScreen = 0;
+    this.lives = 3;
+    this.score = 0;
+    this.timer = null;
+    this.timerTime = 120;
   }
 
   start() {
     this.showScreen(this.data[this.currentScreen]);
   }
 
-  next() {
+  next(correct) {
     this.currentScreen += 1;
     if (this.currentScreen > this.data.length - 1) {
       this.currentScreen = 0;
+      this.lives = 3;
+      this.score = 0;
     }
+
+    if (correct !== 'undefined') {
+      if (correct) {
+        this.score += 1;
+      } else {
+        if (this.lives > 1) {
+          this.lives -= 1;
+        } else {
+          this.currentScreen = this.data.length - 1;
+          this.lives -= 1;
+        }
+      }
+    }
+
     this.showScreen(this.data[this.currentScreen]);
   }
 
@@ -39,7 +59,6 @@ export default class Manager {
         screen.renderHtml(),
         mainElement
     );
-
   }
 
   getScreenFromData(data) {
@@ -47,6 +66,30 @@ export default class Manager {
     Instance = new Instance(data);
     Instance.setManager(this);
     return Instance;
+  }
+
+  getScore() {
+    return this.score;
+  }
+
+  startTimer() {
+    this.timerTime = 120;
+    this.timer = setInterval(() => {
+      this.timerTime -= 1;
+      if (this.timerTime < 1) {
+        this.currentScreen = this.data.length - 2;
+        this.next();
+        this.stopTimer();
+      }
+    }, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.timer);
+  }
+
+  getTime() {
+    return this.timerTime;
   }
 
 }
