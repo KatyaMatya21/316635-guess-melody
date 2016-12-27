@@ -3,6 +3,8 @@ import ScreenStart from './screen--start';
 import ScreenEnd from './screen--end';
 import ScreenArtist from './screen--artist';
 import ScreenGenre from './screen--genre';
+import Model from './model';
+import TimerElement from './timer';
 
 export default class Manager {
 
@@ -15,33 +17,41 @@ export default class Manager {
       [Screen.screentype.GENRE, ScreenGenre]
     ]);
     this.currentScreen = 0;
-    this.lives = 3;
-    this.score = 0;
     this.timer = null;
-    this.timerTime = 120;
+    this.state = new Model();
+    this.timerElement = null;
   }
 
   start() {
+
+    let app = document.querySelector('.app');
+    let mainElement = document.querySelector('.main');
+
+    this.timerElement = new TimerElement( this.state.getTime() );
+    let markup = this.timerElement.getMarkup();
+
+    app.insertBefore( markup, mainElement );
+
     this.showScreen(this.data[this.currentScreen]);
   }
 
   next(correct) {
+
     this.currentScreen += 1;
     if (this.currentScreen > this.data.length - 1) {
       this.currentScreen = 0;
-      this.lives = 3;
-      this.score = 0;
+      this.state.reset();
+      this.stopTimer();
+      this.timerElement.reset();
     }
 
-    if (correct !== 'undefined') {
+    if (correct !== undefined) {
       if (correct) {
-        this.score += 1;
+        this.state.addScore();
       } else {
-        if (this.lives > 1) {
-          this.lives -= 1;
-        } else {
+        this.state.deduceLives();
+        if (this.state.getLives() < 1) {
           this.currentScreen = this.data.length - 1;
-          this.lives -= 1;
         }
       }
     }
@@ -69,27 +79,32 @@ export default class Manager {
   }
 
   getScore() {
-    return this.score;
+    return this.state.getScore();
   }
 
   startTimer() {
-    this.timerTime = 120;
+    this.timerTime = this.state.getTime();
+
+    this.timerElement.reset();
+    this.timerElement.start();
+
     this.timer = setInterval(() => {
-      this.timerTime -= 1;
-      if (this.timerTime < 1) {
+      this.state.tick();
+      if (this.state.getTime() < 1) {
         this.currentScreen = this.data.length - 2;
-        this.next();
         this.stopTimer();
+        this.next();
       }
     }, 1000);
   }
 
   stopTimer() {
+    this.timerElement.stop();
     clearInterval(this.timer);
   }
 
   getTime() {
-    return this.timerTime;
+    return this.state.getTime();
   }
 
 }
